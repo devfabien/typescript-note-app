@@ -8,7 +8,8 @@ import { notesInt } from "./components/Interfaces";
 
 export default function App() {
   const def: notesInt[] = [];
-  const [notes, setNotes] = useState( def);
+  const [notes, setNotes] = useState( def
+);
   const [currentNoteId, setCurrentNoteId] = useState(
     (notes[0] && notes[0].id) || ""
   );
@@ -54,9 +55,7 @@ export default function App() {
       }) || notes[0]
     );
   }
-  function deleteNote(id: string) {
-    setNotes((oldNotes:notesInt[]) => oldNotes.filter((note:notesInt) => note.id !== id));
-  }
+ 
 
   return (
     <main>
