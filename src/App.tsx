@@ -55,7 +55,9 @@ export default function App() {
       }) || notes[0]
     );
   }
- 
+  function deleteNote(id: string) {
+    setNotes((oldNotes:notesInt[]) => oldNotes.filter((note:notesInt) => note.id !== id));
+  }
 
   return (
     <main>
