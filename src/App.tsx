@@ -23,6 +23,15 @@ export default function App() {
     setCurrentNoteId(newNote.id);
   }
 
+ 
+
+  function updateNote(text:string) {
+      setNotes((oldNotes:notesInt[]) => oldNotes.map(oldNote => {
+          return oldNote.id === currentNoteId
+              ? { ...oldNote, body: text }
+              : oldNote
+      }))
+  }
 
   return (
     <main>
