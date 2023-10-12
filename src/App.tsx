@@ -8,12 +8,16 @@ import { notesInt } from "./components/Interfaces";
 
 export default function App() {
   const def: notesInt[] = [];
-  const [notes, setNotes] = useState( def
-);
+  const [notes, setNotes] = useState(
+    () => JSON.parse(localStorage.getItem("notes")) || def
+  );
   const [currentNoteId, setCurrentNoteId] = useState(
     (notes[0] && notes[0].id) || ""
   );
 
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
 
   function createNewNote() {
     const newNote = {
