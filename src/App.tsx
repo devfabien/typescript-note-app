@@ -23,14 +23,39 @@ export default function App() {
     setCurrentNoteId(newNote.id);
   }
 
- 
+  //this code doesn't re arrange the notes
 
-  function updateNote(text:string) {
-      setNotes((oldNotes:notesInt[]) => oldNotes.map(oldNote => {
-          return oldNote.id === currentNoteId
-              ? { ...oldNote, body: text }
-              : oldNote
-      }))
+  // function updateNote(text:string) {
+  //     setNotes((oldNotes:notesInt[]) => oldNotes.map(oldNote => {
+  //         return oldNote.id === currentNoteId
+  //             ? { ...oldNote, body: text }
+  //             : oldNote
+  //     }))
+  // }
+
+  function updateNote(text: string) {
+    setNotes((oldNotes: notesInt[]) => {
+      const newArray = [];
+      for (let note of oldNotes) {
+        if (note.id === currentNoteId) {
+          newArray.unshift({ ...note, body: text });
+        } else {
+          newArray.push(note);
+        }
+      }
+      return newArray;
+    });
+  }
+
+  function findCurrentNote() {
+    return (
+      notes.find((note: notesInt) => {
+        return note.id === currentNoteId;
+      }) || notes[0]
+    );
+  }
+  function deleteNote(id: string) {
+    setNotes((oldNotes:notesInt[]) => oldNotes.filter((note:notesInt) => note.id !== id));
   }
 
   return (
