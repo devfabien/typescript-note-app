@@ -1,10 +1,7 @@
-import { notesInt } from "./Interfaces";
+import { notesInt, props } from "./Interfaces";
 
 export default function Sidebar(
-  props: { notes: notesInt[],
-    currentNote: notesInt,
-    setCurrentNoteId: (id: string) => void,
-    newNote:()=> void},
+  props: props,
 
 ) {
    
