@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import Editor from "./components/Editor";
-// import { data } from "./data"
 import Split from "react-split";
 import { nanoid } from "nanoid";
 import { notesInt } from "./components/Interfaces";
@@ -9,8 +8,10 @@ import { notesInt } from "./components/Interfaces";
 export default function App() {
   const def: notesInt[] = [];
   const [notes, setNotes] = useState(
-    () => JSON.parse(localStorage.getItem("notes")) || def
-  );
+    () => {
+      const notes=localStorage.getItem("notes")
+      return notes? JSON.parse(notes):def
+    }) 
   const [currentNoteId, setCurrentNoteId] = useState(
     (notes[0] && notes[0].id) || ""
   );

@@ -4,7 +4,7 @@ import Showdown from "showdown"
 import { notesInt} from "./Interfaces"
 
 export default function Editor({ currentNote, updateNote }:{currentNote:notesInt,updateNote:(text:string)=>void}) {
-    const [selectedTab, setSelectedTab] = useState("write")
+    const [selectedTab, setSelectedTab] = useState<"write"|"preview">("write")
 
     const converter = new Showdown.Converter({
         tables: true,
